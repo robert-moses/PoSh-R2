@@ -9,7 +9,7 @@ In a single execution, PoSH-R2 will retrieve the following data from an individu
 &#160;&#160;&#160;&#160;- Autorun entries <br>
 &#160;&#160;&#160;&#160;- Disk info <br>
 &#160;&#160;&#160;&#160;- Environment variables <br>
-&#160;&#160;&#160;&#160;- Event logs (50 lastest) <br>
+&#160;&#160;&#160;&#160;- Event logs (500 lastest) <br>
 &#160;&#160;&#160;&#160;- Installed Software <br>
 &#160;&#160;&#160;&#160;- Logon sessions <br>
 &#160;&#160;&#160;&#160;- List of drivers <br>
