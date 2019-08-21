@@ -8,7 +8,7 @@
             - Autorun entries
             - Disk info
             - Environment variables
-            - Event logs (50 latest)
+            - Event logs (500 latest)
             - Installed Software (Warning: https://gregramsey.net/2012/02/20/win32_product-is-evil/)
             - Logon sessions
             - List of drivers
@@ -30,8 +30,8 @@
 
 .NOTES  
     File Name      : PoSH-R2.ps1
-    Version        : v.0.2
-    Author         : @WiredPulse
+    Version        : v.0.2.1
+    Author         : @robertmoses (credit to @WiredPulse)
     Prerequisite   : PowerShell
     Created        : 10 Oct 16
 #>
@@ -463,9 +463,9 @@ Get-WmiObject -Class win32_networkloginprofile -ComputerName $computers | select
 # is not ran from the ISE console)
 # ==============================================================================
 Write-Host "Retrieving event log information..." -ForegroundColor yellow
-Get-WmiObject -Class win32_ntlogevent -ComputerName $computers | where {$_.LogFile -eq 'System'} | select PSComputername, LogFile, EventCode, TimeGenerated, Message, InsertionStrings, Type | select -first 50 | Export-CSV .\Eventlogs-System.csv -NoTypeInformation
-Get-WmiObject -Class win32_ntlogevent -ComputerName $computers | where {$_.LogFile -eq 'Security'} | select PSComputername, LogFile, EventCode, TimeGenerated, Message, InsertionStrings, Type | select -first 50 | Export-CSV .\Eventlogs-Security.csv -NoTypeInformation
-Get-WmiObject -Class win32_ntlogevent -ComputerName $computers | where {$_.LogFile -eq 'Application'} | select PSComputername, LogFile, EventCode, TimeGenerated, Message, InsertionStrings, Type | select -first 50 | Export-CSV .\Eventlogs-Application.csv -NoTypeInformation
+Get-WmiObject -Class win32_ntlogevent -ComputerName $computers | where {$_.LogFile -eq 'System'} | select PSComputername, LogFile, EventCode, TimeGenerated, Message, InsertionStrings, Type | select -first 500 | Export-CSV .\Eventlogs-System.csv -NoTypeInformation
+Get-WmiObject -Class win32_ntlogevent -ComputerName $computers | where {$_.LogFile -eq 'Security'} | select PSComputername, LogFile, EventCode, TimeGenerated, Message, InsertionStrings, Type | select -first 500 | Export-CSV .\Eventlogs-Security.csv -NoTypeInformation
+Get-WmiObject -Class win32_ntlogevent -ComputerName $computers | where {$_.LogFile -eq 'Application'} | select PSComputername, LogFile, EventCode, TimeGenerated, Message, InsertionStrings, Type | select -first 500 | Export-CSV .\Eventlogs-Application.csv -NoTypeInformation
 
 # ==============================================================================
 # Driver information
